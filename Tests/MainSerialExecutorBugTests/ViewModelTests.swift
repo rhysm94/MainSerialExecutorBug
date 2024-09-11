@@ -13,9 +13,8 @@ final class ViewModelTests: XCTestCase {
   func testLoadingState() async {
     await withMainSerialExecutor {
       let viewModel = ViewModel(
-        loadInt: {
-          await Task.yield()
-          return 5
+        loadInt: { completion in
+          completion(5)
         }
       )
 
